@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../result-university"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../webcademy-js-6-hours-course"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "result-university"
+	}
+}
