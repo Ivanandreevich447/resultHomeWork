@@ -1,19 +1,17 @@
 /*1.2*/
-// console.log("Запускаем таймер");
+// alert("Запускаем таймер");
 
 // const timer = [5, 4, 3, 2, 1, 0]
 // for(let time of timer) {
-//     console.log(time);
+//     alert(time);
 // }
-// console.log("Обратный отсчет закончен");
-
+// alert("Обратный отсчет закончен");
 
 /*1.3*/
 // const info = ['Брендан Эйх', '10', '1995 год', 'JavaScript — это не Java', 'ECMAScript']
 // for(let answer of info) {
 // console.log(answer);
 // }
-
 
 /*1.4*/
 // prompt("Сколько будет 2 + 2?");
@@ -24,15 +22,11 @@
 // alert(" если ты ответил 32, то ты прав.");
 /*не придумал,как сделать по-другому*/
 
-
-
 /*2.1*/
 //JavaScript-код с созданием переменных
 
 /* автор
 Чувашев Иван */
-
-
 
 /*2.2*/
 // A что const не отделяю ;  а консоль ставлю - это не очень? лучше кажое действие вообще тогда разделять,раз начал ?
@@ -52,8 +46,6 @@
 // let myFavoriteProgrammingLanguage = 'js'
 // console.log(myFavoriteProgrammingLanguage);
 
-
-
 /*2.3*/
 // const carName = 'audi'
 // alert(`марка машины ${carName}`)
@@ -63,11 +55,9 @@
 // let carOwner = 'его нет'
 // alert(`владелец : ${carOwner}`)
 
-
-
 /*2.4*/
 // let maxSpeed = 444
-// maxSpeed = 333 
+// maxSpeed = 333
 // console.log(`У машины изменилась скорость на ${maxSpeed} km/h`);
 
 // maxSpeed = 222
@@ -75,7 +65,6 @@
 
 // maxSpeed = 555
 // console.log(`У машины изменилась скорость на ${maxSpeed} km/h`);
-
 
 // let carOwner = 'его нет'
 // carOwner = 'petya'
@@ -87,8 +76,6 @@
 
 // carOwner = 'dima '
 // console.log('У машины изменился владелец:', carOwner);
-
-
 
 /*2.5*/
 // const question1 = 'Какая самая маленькая страна мира по населению?'
@@ -104,8 +91,6 @@
 
 // const age = 20;
 // console.log('age', age, typeof age)
-
-
 
 /*3.1*/
 // const name = 'Ivan'
@@ -135,7 +120,6 @@
 // }
 // console.log(person, typeof person);
 
-
 /*3.2*/
 // let newYear = 2025
 // newYear = '2025'  /*String(newYear)*/
@@ -148,7 +132,6 @@
 // let arr = true
 // haveName = null
 // alert(haveName)
-
 
 /*3.3*/
 // let ageOfPerson1 = 18;
@@ -178,23 +161,20 @@
 // helloText2 = helloText1
 // console.log(helloText2, typeof helloText2);
 
-
-
 /*4.1  - как предлагал немного усложнить задания, объект добавил через typeof- а то не определялось точно как объект */
+
 // const typing = ['ivan', 29, true, null, undefined, 432n, { name: 'Maxim' }, Symbol()]  //как и писали Sumbol - ошибка
 
-
 // for(let type of typing) {
-// console.log(Number(type), String(type), Boolean(type)); 
+// console.log(Number(type), String(type), Boolean(type));
 // }
 // console.log(typing); /*не особа и нужен тут вывод в консоль*/
-
 
 /*4.2*/
 
 // //1
 // console.log(+'50', typeof Number('50')) //неявное
-// console.log(Number('50')); 
+// console.log(Number('50'));
 // //2
 // console.log(Number('100'), typeof Number('100')) //явное
 // //3
@@ -217,15 +197,12 @@
 // //10
 // console.log(Number('Hello World'), typeof Number('Hello World')) //явное
 
-
-
 /*4.3*/
 // const arrow = [console.log, Number, '', 0, -10, '-105', { name: 'Maxim' }, Symbol('key')]
 // for(let arr of arrow) {
 //     console.log(String(arr), String(arr), Number(arr) );
 // }
 // console.log(arrow);
-
 
 /*4.4*/
 
@@ -250,9 +227,6 @@
 // // 10
 // console.log(Number('000001')); //1
 
-
-
-
 /*5.1*/
 // const myName = 'Иван'
 // const programmingLanguage = 'JavaScript'
@@ -260,7 +234,6 @@
 // const reasonText = 'хочу сменить сферу деятельности с зубного техника на новое'
 // const numberOfMonth = '2'
 // console.log(`Всем привет! Меня зовут ${myName}. Сейчас я изучаю язык программирования ${programmingLanguage} на курсе по ${programmingLanguage} у ${courseCreatorName}. Я хочу стать веб-разработчиком, потому что ${reasonText}. До этого я изучал ${programmingLanguage} ${numberOfMonth} месяца. Я уверен, что пройду данный курс до конца!`);
-
 
 // /*5.2*/
 // const myName = 'Иван'
@@ -271,53 +244,197 @@
 
 // let myInfoText = `Всем привет! Меня зовут ${myName}. Сейчас я изучаю язык программирования ${programmingLanguage} на курсе по ${programmingLanguage} у ${courseCreatorName}. Я хочу стать веб-разработчиком, потому что ${reasonText}. До этого я изучал ${programmingLanguage} ${numberOfMonth} месяца. Я уверен, что пройду данный курс до конца!`
 
-// let newText = myInfoText.replaceAll('JavaScript', 'javascript').replaceAll('курс' , 'КУРС')
-// console.log(newText);
+// myInfoText = myInfoText.replaceAll('JavaScript', 'javascript')
+// myInfoText = myInfoText.replaceAll('курс' , 'КУРС')
 
-// console.log(myInfoText.replaceAll('JavaScript', 'javascript').replaceAll('курс' , 'КУРС')); //не совсем понял через новую или старую перменную надо вывести
+// // console.log(myInfoText);
+// // console.log(myInfoText.length);
 
-// console.log(myInfoText.length);
+// console.log(myInfoText,'\n',
+//     myInfoText.length,'\n',
+//      myInfoText[0], myInfoText[myInfoText.length - 1]);
 
-// console.log(myInfoText[0], myInfoText[myInfoText.length - 1]);
+// // /*5.3-4   преобразовал в число по разному,чтоб явно и не явно */
+// // const userName = prompt('Как Вас зовут?').toLocaleLowerCase().trim()
+
+// // // const userAge = Number(prompt('Сколько вам лет?').trim())
+// // const userAge = +prompt('Сколько вам лет?').trim()
+
+// // console.log(`Вас зовут: ${userName} и вам ${userAge} лет`, typeof userAge);
+
+// // /*5.5*/
+// // const userString = prompt('Введите строку обрезки').trim()
+// // const startSliceIndex = +prompt('Введите индекс, с которого нужно начать обрезку строки')
+// // const endSliceIndex = +prompt('Введите индекс, которым нужно закончить обрезку строки')
+// // alert(userString.slice(startSliceIndex, endSliceIndex))
+
+// // /*5.6  если не переводить в массив и обратно, то на слове "я" - уберет не слово , а первую попавшуюся эту букву в слове*/
+// // меня зовут ваня, я сижу учусь дома -для проверки
+
+// // const userText = prompt('Введите текст').trim().split(' ')
+// //  //тут убрал пробелы, перевел в массив ,где каждое слово через запятую
+
+// // const wordFromText = prompt('Введите слово из текста').trim() //слово из текста выше без пробелов
+
+// // const indexOfWord = userText.indexOf(wordFromText) //ищу индекс слова из текста
+
+// // /*console.log(indexOfWord);
+// // console.log(wordFromText);*/
+
+// // alert(`Результат обрезаной строки: ${userText.slice(0, indexOfWord).join(' ')}`)
+// // // console.log(userText.slice(0, indexOfWord).join(' ')); // выполняю главное задание - обрезать строку с 0 индекса до слова введенного. так же перевожу массив обратно в строку
+
+// /*6.1*/
+// // const existingUserLogin = 'the_best_user'
+// // const existingUserPassword = 12345678
+
+// // const userLogin = prompt('Введите логин!').trim()
+// // const userPassword = +prompt('Введите пароль!').trim() // выше задали число и строгму равенству должно прийти тип тоже число
+
+// // /* console.log(typeof userPassword); */
+
+// // if(existingUserLogin === userLogin && existingUserPassword === userPassword ) {
+// //     console.log(`Добро пожаловать ${userLogin}!!`);
+// // } else {
+// //     console.log('Логин и (или) Пароль введены неверно!');
+// // }
+
+// /*6.2*/
+// const answerOne = 4;
+// const answerTwo = 4;
+// const answerThree = 1;
+// const answerFour = 12;
+// const answerFive = 6;
+
+// // let answer = 4
+// // answer = 4
+// // answer = 1
+// // answer = 12
+// // answer = 6
+
+// let correctAnswers = 0;
+// let incorrectAnswers = 0;
+
+// const taskOne = +prompt("Сколько будет 2 + 2?").trim();
+// // let compare = taskOne === answerOne ? alert('Ответ верный!') : alert('Ответ неверный!');
+
+// if (taskOne === answerOne) {
+//   alert("Ответ верный!");
+//   correctAnswers++;
+// } else {
+//   alert("Ответ неверный!");
+//   incorrectAnswers++;
+// }
+// console.log();
+// const taskTwo = +prompt("Сколько будет 2 * 2?").trim();
+
+// // compare = taskTwo === answerTwo ? alert('Ответ верный!') : alert('Ответ неверный!');
+
+// if (taskTwo === answerTwo) {
+//   alert("Ответ верный!");
+//   correctAnswers++;
+// } else {
+//   alert("Ответ неверный!");
+//   incorrectAnswers++;
+// }
+
+// const taskThree = +prompt(
+//   "У Пети было 5 яблок. 3 из них он съел, 1 отдал другу. Сколько яблок у Пети осталось?"
+// ).trim();
+// if (taskThree === answerThree) {
+//   alert("Ответ верный!");
+//   correctAnswers++;
+// } else {
+//   alert("Ответ неверный!");
+//   incorrectAnswers++;
+// }
+
+// const taskFour = +prompt(
+//   "У Маши было 10 конфет. 2 она съела, 1 отдала другу. После мама дала Маше еще 5 конфет. Сколько в итоге конфет осталось у Маши?"
+// ).trim();
+// if (taskFour === answerFour) {
+//   alert("Ответ верный!");
+//   correctAnswers++;
+// } else {
+//   alert("Ответ неверный!");
+//   incorrectAnswers++;
+// }
+
+// const taskFive = +prompt("Сколько будет 2 + 2 * 2?").trim();
+// if (taskFive === answerFive) {
+//   alert("Ответ верный!");
+//   correctAnswers++;
+// } else {
+//   alert("Ответ неверный!");
+//   incorrectAnswers++;
+// }
+
+// alert(
+//   `Конец теста ! \n
+//   Правльных ответов : ${correctAnswers}, \n
+//   неправильных : ${incorrectAnswers}.`
+// );
+
+// /*6.3*/
+// let res = confirm('JavaScript появился в 1995 году?')
+// if(res) {
+//     alert('Верно')
+// } else {
+//     alert('Не угадал..')
+// }
+
+//  res = confirm ('Спецификация JavaScript называется ECMAScrip?')
+
+// if(res) {
+//     alert('Верно')
+// } else {
+//     alert('Не угадал..')
+// }
+
+//  res = confirm ('JavaScript был создан за 1 месяц?')
+// if(res) {
+//     alert('за 10 дней')
+// } else {
+//     alert('Верно')
+// }
+
+// /*6.4*/
+
+// for (let i = 0; i < 3; i += 1) {
+//     let newStudent = prompt('Введите имя нового студента!');
+//     if (newStudent) {
+//       newStudent = newStudent.trim();
+//       alert(`Добро пожаловать, ${newStudent}!`)
+//     }
+//   }
+
+// let i = 0;
+// while (i < 3) {
+//   let newStudent = prompt("Введите имя нового студента!");
+//   if (newStudent) {
+//     newStudent = newStudent.trim();
+//     alert(`Добро пожаловать, ${newStudent}`);
+//   }
+//   i++;
+// }
+
+
+// let i = 0;
+// do {
+//     let newStudent = prompt("Введите имя нового студента!");
+//       if (newStudent) 
+//         newStudent = newStudent.trim();
+//         alert(`Добро пожаловать, ${newStudent}`);
+//         i++
+// } while (i < 3)
 
 
 
 
-// /*5.3-4   преобразовал в число по разному,чтоб явно и не явно */ 
-// const userName = prompt('Как Вас зовут?').toLocaleLowerCase().trim()
+// /*6.5*/
 
-// // const userAge = Number(prompt('Сколько вам лет?').trim())
-// const userAge = +prompt('Сколько вам лет?').trim() 
-
-// console.log(`Вас зовут: ${userName} и вам ${userAge} лет`, typeof userAge);
-
-
-
-
-// /*5.5*/
-// const userString = prompt('Введите строку обрезки').trim()
-// const startSliceIndex = +prompt('Введите индекс, с которого нужно начать обрезку строки')
-// const endSliceIndex = +prompt('Введите индекс, которым нужно закончить обрезку строки')
-// alert(userString.slice(startSliceIndex, endSliceIndex))
-
-
-
-
-
-// /*5.6  если не переводить в массив и обратно, то на слове "я" - уберет не слово , а первую попавшуюся эту букву в слове*/
-// меня зовут ваня, я сижу учусь дома -для проверки
-
-// const userText = prompt('Введите текст').trim().split(' ')
-//  //тут убрал пробелы, перевел в массив ,где каждое слово через запятую
-
-// const wordFromText = prompt('Введите слово из текста').trim() //слово из текста выше без пробелов
-
-// const indexOfWord = userText.indexOf(wordFromText) //ищу индекс слова из текста
-
-// /*console.log(indexOfWord);
-// console.log(wordFromText);*/ 
-
-// alert(`Результат обрезаной строки: ${userText.slice(0, indexOfWord).join(' ')}`)
-// // console.log(userText.slice(0, indexOfWord).join(' ')); // выполняю главное задание - обрезать строку с 0 индекса до слова введенного. так же перевожу массив обратно в строку
-
-
+// let sum = 0;  //начальная сумма равна 0 
+// for (let i = 0; i <= 100; i++) { //пока не равно 100 работает цикл с итарацией ++
+// sum += i   //тут к сумму(0) я + итерацию и на каждом круге мы + новое значение 
+// }
+// alert(sum); // готовый ответ без кажого шага
