@@ -180,7 +180,7 @@
 // //3
 // console.log('' + 1, typeof ('' + 1)) //неявное
 // console.log(String(1));
-// //4
+// //4›
 // console.log(String(1), typeof String(1)) //явное
 // //5
 // console.log(Boolean(0), typeof Boolean(0))// явное
@@ -200,7 +200,7 @@
 /*4.3*/
 // const arrow = [console.log, Number, '', 0, -10, '-105', { name: 'Maxim' }, Symbol('key')]
 // for(let arr of arrow) {
-//     console.log(String(arr), String(arr), Number(arr) );
+//     console.log(String(arr), Boolean(arr), Number(arr) );
 // }
 // console.log(arrow);
 
@@ -438,3 +438,5 @@
 // sum += i   //тут к сумму(0) я + итерацию и на каждом круге мы + новое значение 
 // }
 // alert(sum); // готовый ответ без кажого шага
+
+
