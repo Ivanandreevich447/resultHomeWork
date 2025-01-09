@@ -260,29 +260,32 @@
 // // // const userAge = Number(prompt('Сколько вам лет?').trim())
 // // const userAge = +prompt('Сколько вам лет?').trim()
 
-// // console.log(`Вас зовут: ${userName} и вам ${userAge} лет`, typeof userAge);
+// // console.log(`Вас зовут: ${userName} и вам ${userAge} лет`, typeof splituserAge);
 
 // // /*5.5*/
-// // const userString = prompt('Введите строку обрезки').trim()
-// // const startSliceIndex = +prompt('Введите индекс, с которого нужно начать обрезку строки')
-// // const endSliceIndex = +prompt('Введите индекс, которым нужно закончить обрезку строки')
-// // alert(userString.slice(startSliceIndex, endSliceIndex))
+// const userString = prompt('Введите строку обрезки').trim()
+// const startSliceIndex = +prompt('Введите индекс, с которого нужно начать обрезку строки')
+// const endSliceIndex = +prompt('Введите индекс, которым нужно закончить обрезку строки')
+// alert(userString.slice(startSliceIndex, endSliceIndex))
 
 // // /*5.6  если не переводить в массив и обратно, то на слове "я" - уберет не слово , а первую попавшуюся эту букву в слове*/
 // // меня зовут ваня, я сижу учусь дома -для проверки
 
-// // const userText = prompt('Введите текст').trim().split(' ')
-// //  //тут убрал пробелы, перевел в массив ,где каждое слово через запятую
+// const userText = prompt('Введите текст').trim().split(' ')
+//  //тут убрал пробелы, перевел в массив ,где каждое слово через запятую
 
-// // const wordFromText = prompt('Введите слово из текста').trim() //слово из текста выше без пробелов
+//  console.log(userText);
+// const wordFromText = prompt('Введите слово из текста').trim() //слово из текста выше без пробелов
 
-// // const indexOfWord = userText.indexOf(wordFromText) //ищу индекс слова из текста
 
-// // /*console.log(indexOfWord);
-// // console.log(wordFromText);*/
+// const indexOfWord = userText.indexOf(wordFromText) //ищу индекс слова из текста
 
-// // alert(`Результат обрезаной строки: ${userText.slice(0, indexOfWord).join(' ')}`)
-// // // console.log(userText.slice(0, indexOfWord).join(' ')); // выполняю главное задание - обрезать строку с 0 индекса до слова введенного. так же перевожу массив обратно в строку
+// // console.log(indexOfWord);
+// // console.log(wordFromText);
+
+// userText = alert(`Результат обрезаной строки: ${userText.slice(0, indexOfWord).join(' ')}`)
+
+// console.log(userText.slice(0, indexOfWord).join(' ')); // выполняю главное задание - обрезать строку с 0 индекса до слова введенного. так же перевожу массив обратно в строку
 
 // /*6.1*/
 // // const existingUserLogin = 'the_best_user'
@@ -418,25 +421,122 @@
 //   i++;
 // }
 
-
 // let i = 0;
 // do {
 //     let newStudent = prompt("Введите имя нового студента!");
-//       if (newStudent) 
+//       if (newStudent)
 //         newStudent = newStudent.trim();
 //         alert(`Добро пожаловать, ${newStudent}`);
 //         i++
 // } while (i < 3)
 
-
-
-
 // /*6.5*/
 
-// let sum = 0;  //начальная сумма равна 0 
+// let sum = 0;  //начальная сумма равна 0
 // for (let i = 0; i <= 100; i++) { //пока не равно 100 работает цикл с итарацией ++
-// sum += i   //тут к сумму(0) я + итерацию и на каждом круге мы + новое значение 
+// sum += i   //тут к сумму(0) я + итерацию и на каждом круге мы + новое значение
 // }
 // alert(sum); // готовый ответ без кажого шага
 
+// доп уроки
 
+/* #1 */
+
+// let javaScriptDescription = 'JavaScript — мультипарадигменный язык программирования. Поддерживает объектно-ориентированный, императивный и функциональный стили. Является реализацией спецификации ECMAScript. JavaScript обычно используется как встраиваемый язык для программного доступа к объектам приложений.'
+
+// javaScriptSlice = javaScriptDescription.slice(1, Math.floor(javaScriptDescription.length / 2)).replaceAll('а', 'А').replaceAll('a', 'A') /*нашел середину строки с округлением/ заменил буквы */
+
+// javaScriptSlice = javaScriptSlice.replaceAll(' ', '').repeat(3) /* в новой,чтоб проще читать код- убрал пробелы и репит(3 раза повторил строку) */
+// console.log(javaScriptSlice[Math.floor(javaScriptSlice.length / 2)]);
+// console.log(javaScriptSlice);
+
+/* # 1 */
+
+// let clientName = "Игорек";
+// let clientSpentForAllTime = 110; //сколько всего потратил
+// let clientSpentToday = 25; //сколько вышло за псоледний визит
+
+
+// let discount;
+// if (clientSpentForAllTime >= 100 && clientSpentForAllTime <= 300) {
+//   discount = 10;
+//   alert(`Вам предоставляется скидка в ${discount}%`)
+// } else if (clientSpentForAllTime >= 300 && clientSpentForAllTime <= 500) {
+//   discount = 20;
+//   alert(`Вам предоставляется скидка в ${discount}%`)
+// } else if (clientSpentForAllTime >= 500) {
+//     discount = 30;
+//     alert(`Вам предоставляется скидка в ${discount}%`)
+// } else {
+//     discount = 0;
+//     alert(`Вам предоставляется скидка в ${discount}%`)
+// }
+
+
+// clientSpentToday = (clientSpentToday - (clientSpentToday /100 * discount)) // сколько выйдет по скидке за рестик сегодня
+
+// clientSpentForAllTime += Number(clientSpentToday); // сумма всех затрат с учетом скидок
+
+
+// alert(`Спасибо, ${clientName} ! К оплате ${clientSpentToday}$. За все время в нашем ресторане вы потратили ${clientSpentForAllTime}$.`)
+
+
+
+
+/* # 2 */
+
+// clientName = prompt('Введите имя клиента')
+
+
+// clientSpentToday = Number(prompt('Сколько клиент потратил сегодня?'))
+
+// // переменная является NaN? или строка пустая - выдай это заверши код/ если ввел число - код идет дальше просто
+// if(isNaN(clientSpentToday) || clientSpentToday == '' ) {
+//      alert('Сумма, которую клиент потратил за все время и которую потратил сегодня, должна быть числом! Перезагрузи страницу, чтобы повторить попытку');
+//     script.stop }
+   
+
+// clientSpentForAllTime = Number(prompt('Сколько клиент потратил за все время?'))
+
+// if(isNaN(clientSpentForAllTime) || clientSpentForAllTime == ''){
+//     alert('Сумма, которую клиент потратил за все время и которую потратил сегодня, должна быть числом! Перезагрузи страницу, чтобы повторить попытку');
+//     script.stop }
+
+// clientSpentForAllTime += Number(clientSpentToday); // сумма всех затрат с учетом скидок
+
+// let discount;
+// if (clientSpentForAllTime >= 100 && clientSpentForAllTime <= 300) {
+//   discount = 10;
+//   alert(`Вам предоставляется скидка в ${discount}%`)
+// } else if (clientSpentForAllTime >= 300 && clientSpentForAllTime <= 500) {
+//   discount = 20;
+//   alert(`Вам предоставляется скидка в ${discount}%`)
+// } else if (clientSpentForAllTime >= 500) {
+//     discount = 30;
+//     alert(`Вам предоставляется скидка в ${discount}%`)
+// } else {
+//     discount = 0;
+//     alert(`Вам предоставляется скидка в ${discount}%`) }
+
+//     clientSpentToday = (clientSpentToday - (clientSpentToday /100 * discount)) // сколько выйдет по скидке за рестик сегодня
+
+
+//     alert(`Спасибо, ${clientName} ! К оплате ${clientSpentToday}$. За все время в нашем ресторане вы потратили ${clientSpentForAllTime}$.`)
+
+// let userPassword = prompt('Введите пароль')
+
+// if(userPassword.length >= 3 && userPassword.lengt <= 30 && userPassword === userPassword.toUpperCase() )
+
+
+/* # 3 */
+
+
+// let userPassword = prompt('Введите пароль')
+
+
+// ///[A-ZА-Я]/.test(userPassword) - проверка на заглавные буквы и [0-9] символы - есть хоть 1 - тру
+// if(Number(userPassword.length) >= 3 && Number(userPassword.length) <= 30 && /[A-ZА-Я]/.test(userPassword) && /[0-9]/.test(userPassword) ) {
+//     alert('Пароль валидный')
+// } else {
+//     alert('Пароль не удовлетворяет условиям! Перезагрузите страницу и попробуйте ввести его еще раз.')
+// }
