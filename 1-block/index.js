@@ -271,7 +271,7 @@
 // // /*5.6  если не переводить в массив и обратно, то на слове "я" - уберет не слово , а первую попавшуюся эту букву в слове*/
 // // меня зовут ваня, я сижу учусь дома -для проверки
 
-// const userText = prompt('Введите текст').trim().split(' ')
+// const userText = prompt('Введите текст').trim()
 //  //тут убрал пробелы, перевел в массив ,где каждое слово через запятую
 
 //  console.log(userText);
@@ -283,9 +283,9 @@
 // // console.log(indexOfWord);
 // // console.log(wordFromText);
 
-// userText = alert(`Результат обрезаной строки: ${userText.slice(0, indexOfWord).join(' ')}`)
+// userText = alert(`Результат обрезаной строки: ${userText.slice(0, indexOfWord)}`)
 
-// console.log(userText.slice(0, indexOfWord).join(' ')); // выполняю главное задание - обрезать строку с 0 индекса до слова введенного. так же перевожу массив обратно в строку
+// console.log(userText.slice(0, indexOfWord)); // выполняю главное задание - обрезать строку с 0 индекса до слова введенного. так же перевожу массив обратно в строку
 
 // /*6.1*/
 // // const existingUserLogin = 'the_best_user'
@@ -444,11 +444,13 @@
 
 // let javaScriptDescription = 'JavaScript — мультипарадигменный язык программирования. Поддерживает объектно-ориентированный, императивный и функциональный стили. Является реализацией спецификации ECMAScript. JavaScript обычно используется как встраиваемый язык для программного доступа к объектам приложений.'
 
-// javaScriptSlice = javaScriptDescription.slice(1, Math.floor(javaScriptDescription.length / 2)).replaceAll('а', 'А').replaceAll('a', 'A') /*нашел середину строки с округлением/ заменил буквы */
+// javaScriptSlice = javaScriptDescription.slice(0, Math.floor(javaScriptDescription.length / 2)).replaceAll('а', 'А').replaceAll('a', 'A') /*нашел середину строки с округлением/ заменил буквы */
 
 // javaScriptSlice = javaScriptSlice.replaceAll(' ', '').repeat(3) /* в новой,чтоб проще читать код- убрал пробелы и репит(3 раза повторил строку) */
 // console.log(javaScriptSlice[Math.floor(javaScriptSlice.length / 2)]);
 // console.log(javaScriptSlice);
+
+
 
 /* # 1 */
 
@@ -540,3 +542,92 @@
 // } else {
 //     alert('Пароль не удовлетворяет условиям! Перезагрузите страницу и попробуйте ввести его еще раз.')
 // }
+
+
+
+
+/*7.1 */
+
+
+// let health = prompt ('Введите число параметра "здоровье" для персонажа')
+// console.log(health);
+// if (health <= 0 || !health) {
+//   alert('Параметр "здоровье" должен быть больше нуля!') 
+
+// } else {
+//   alert(`Параметр "здоровье" равен ${health}`); // выводил не верно - обратные ковычки
+// }
+// console.log(Health);  // не нашел такой переменной- с мелкий буквы пишем
+
+
+
+/* 7.2 */
+
+// const temperatureInCelsius = Number(prompt('Введите температуру в градусах Цельсия'));
+// console.log(typeof temperatureInCelsius);
+// if (temperatureInCelsius === 0) {// сравниваем 0 и строку(промпт-строка)
+//    alert('0 градусов по Цельсию - это температура замерзания воды')
+// } 
+// else if (temperatureInCelsius > 0) {
+//    alert('Для замерзания воды температура должна быть 0 градусов по Цельсию либо ниже');
+// }
+// const temperatureInFahrenheit = temperatureInCelsius * 9 / 5 + 32;
+// // console.log(temperatureIncelsius); // C - большая должна
+
+// alert(`${temperatureInCelsius} градусов по Цельсию - это ${temperatureInFahrenheit} по Фаренгейту.`); // $
+
+
+
+/* 7.3 */
+
+// const salaryOfJuniorDeveloper = 500;
+// const numberOfJuniorDevelopers = 3;
+// let taxPercentage = 13;
+// let totalJuniorDevelopersSalary = 0;
+
+// console.log(totalJuniorDevelopersSalary); //андефайн - а заданы вещде числа в задаче, укажу начальную позицию = 0
+                
+// for (let i = 0; i < numberOfJuniorDevelopers; i += 1) {
+//    const salaryWithTax = salaryOfJuniorDeveloper - (salaryOfJuniorDeveloper*taxPercentage/100);
+//    totalJuniorDevelopersSalary += salaryWithTax;
+// }
+// console.log('totalJuniorDevelopersSalary', totalJuniorDevelopersSalary);
+
+
+
+
+/* 7.4 */
+
+
+// const numbers = [10, 4, 100, -5, 54, 2]
+// let sum = 0;
+
+// // Через цикл for
+// for (let i = 0; i < numbers.length; i += 1) {
+//   console.log(numbers[i]);
+
+//     // numbers[i] = numbers[i] ** 3; //массив сразу за 1 итерацию меняется весь
+//     // console.log(numbers[i]);
+
+//     numbersArr = numbers[i] ** 3;
+//     console.log(numbersArr);// массив не сразу весь возвелся в степень и изменился, а по 1 объукту в массиве-по очереди
+//     // sum += numbers[i];
+//     sum += numbersArr;
+
+//     console.log(sum);
+// } 
+// console.log(sum); // 1158411
+
+// Через цикл for of
+
+// sum = 0;
+// for (let num of numbers){
+//     num = num ** 3;
+//     console.log(num); //выдает значения в 9 степени изначально из-за мутации массива выше
+//     sum += num;
+//     console.log(sum);
+// } 
+// console.log(sum); // 1158411
+
+
+
