@@ -631,3 +631,123 @@
 
 
 
+
+/* 8.1 */
+
+// function getName1(name) {
+//   return `имя равно ${name}`
+// }
+// const res = getName1('ivan1')
+// console.log(res);
+
+
+// const getName2 = function(name) {
+//   return `имя равно ${name}`
+// }
+// const result = getName2('ivan2')
+// console.log(result);
+
+
+// const getName3 = name => `имя равно ${name}`//кратко
+
+// const getName3 = name => {
+//   return `имя равно ${name}`
+// }
+// const resultGetName3 = getName3('ivan3')
+// console.log(resultGetName3);
+
+
+
+/* 8.2 */
+// function getSumOfNumbers (number, type = 'odd') {
+//   if(number !== typeof number || isNaN(number) ) {
+//     return isNaN
+//   }
+//   let sum = 0;
+// for(let i = 0; i <= number; i++ ) {
+//   if(type === 'odd' && i % 2 !== 0 ) {//нечетные
+//     sum += i
+//   }
+//   else if(type === 'even' && i % 2 === 0) {
+//     sum += i
+//   } else if (type === '') {
+//     sum += i
+//   } else if(typeof number !== 'number') {
+//     nan
+//   }
+// }
+// return sum
+// }
+// console.log(getSumOfNumbers(12, 'odd'));
+
+
+
+
+// function getSumOfNumbers (number, type = 'odd') {
+//     if( isNaN(number) || number === '') {
+//       return isNaN
+//     }
+// let sum = 0;
+  
+// for (let i = 0; i <= number; i++) {
+//   if (type === 'odd' && i % 2 !== 0) {
+//     sum += i; // Суммируем только нечётные
+//   } else if (type === 'even' && i % 2 === 0) {
+//     sum += i; // Суммируем только чётные
+//   } else if (type === '') {
+//     sum += i; // Если тип пустой, суммируем всё
+//   }
+// }
+
+// return sum;
+// }
+
+// console.log(getSumOfNumbers(10, ''));
+
+
+/* 8.3 */
+
+
+// function getDivisorsCount (number) {
+//   if(isNaN(number) || number === '' ) { 
+//    return NaN
+
+//   } else if(number < 0 || !Number.isInteger(number)) {
+//     alert(`number должен быть целым числом и больше нуля!`)
+//   } 
+
+// let countDivisors = 0
+// for(let i = 1; i <= number; i++) {
+//   if(number % i === 0) { //если число делится на i без остатка - делитель подходит
+//     countDivisors++ // если итерация верная - то к начальнону 0 + 1 идет
+//   }
+// }
+// return countDivisors
+// }
+
+// console.log(getDivisorsCount('2')); // 012 воспринимает как 12 просто, 0 - считает nan/ '2' - алерт и даст ответ еще
+
+
+
+// function getDivisorsCount (number) {
+//   if(isNaN(number) || number == '' ) { 
+//    return NaN
+//   } else if(number < 0 || !Number.isInteger(number)) {
+//     alert(`number должен быть целым числом и больше нуля!`)
+//   } else if (Number(number)) { 
+//     let countDivisors = 0
+//     for(let i = 1; i <= number; i++) {
+//       if(number % i === 0) { //если число делится на i без остатка - делитель подходит
+//         countDivisors++ // если итерация верная - то к начальнону 0 + 1 идет
+//       }
+//   }
+//   return countDivisors
+
+// }
+
+// }
+
+// console.log(getDivisorsCount(0)); // 0012 воспринимает как 12 просто, 0 - считает nan
+
+
+
