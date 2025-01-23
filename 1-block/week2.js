@@ -137,7 +137,7 @@
 /* 8.3 */
 
 // function getDivisorsCount (number) {
-//   if(isNaN(number) || !number) { //если параметр не число а NaN - тру будет и , если задан !number  -  читается как НЕ щадан параметр
+//   if(isNaN(number) || !number) { //если параметр не число а NaN - тру будет и , если задан !number  -  читается как НЕ задан параметр
 //    return NaN
 //   } else if(number < 0 || !Number.isInteger(number)) {
 //     alert(`number должен быть целым числом и больше нуля!`)

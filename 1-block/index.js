@@ -751,3 +751,19 @@
 
 
 
+// Задание #1
+
+// function checkQuestionAnswer (question, correctAnswer) {
+
+//  question =  prompt(`${question}`)
+//  question = question[0].toUpperCase() + question.slice(1).toLocaleLowerCase()
+// if(question === correctAnswer ) {
+//     console.log(`Ответ верный`);
+// } else { console.log(`ответ неверный`);}
+
+// }
+
+
+// checkQuestionAnswer('Арбуз это фрукт или ягода?', 'Ягода')
+// checkQuestionAnswer('Сколько в среднем зубов у взрослого человека?', '32');
+// checkQuestionAnswer('Как называется самая маленькая птица в мире?', 'Колибри');
