@@ -36,7 +36,7 @@ function task1 () {
     console.log(`Сейчас в онлайн следующие игроки ${usersOnlineNames}.`);
     
 }
-task1()
+// task1()
 
 /*10.2 */
 
@@ -61,7 +61,7 @@ function task2 () {
         giveTalonsInOrder(patients, orders)
     
 }
-
+// task2()
 
 /*10.3 */
 
@@ -96,7 +96,7 @@ function task3 () {
      console.log(result);
     
 }
-task3()
+// task3()
 
 
 /*10.4 */
@@ -136,7 +136,7 @@ function task5 (){
     console.log(sum(1, 2, 3)) // 6
 
 }
-task5()
+// task5()
 
 
 /*11.1 */
@@ -156,7 +156,7 @@ function task6 () {
         // console.log(date);
         getDateFormat(date, '.') //разделитель 
 }
-task6()
+// task6()
 
 /*date = String(new Date()) //перевод в строку по заданию
 console.log(typeof date); // проверка- строка*/
@@ -186,7 +186,7 @@ function task6() {
 
         convertMsToDays(convertGetDay)
 }
-task6()
+// task6()
 
 
 
@@ -210,4 +210,107 @@ function task7 () {
         addDays(date, 12)
     
 }
-task7()
+// task7()
+
+
+/*12.1 доп */
+
+
+  
+const groceries = {
+    "73Wakv": {
+      name: "Orange Juice",
+      price: 1.5,
+      discount: 10
+    },
+    "5L3db9": {
+      name: "Chocolate",
+      price: 2,
+      discount: 0
+    }
+  };
+//   const { "73Wakv" :{price, discount} } = groceries
+
+
+  const shoppingBag = [
+    { productId: "73Wakv", count: 3 },
+    { productId: "5L3db9", count: 23 }
+  ];
+//   const [{productId, count}] = shoppingBag
+
+
+function task8() {
+
+    function getTotalPriceOfShoppingBag (shoppingBag) {
+        let sum = 0 //буду считать тут стоимость корзины
+         for(let id of shoppingBag) { //перебор по массиву
+             // console.log(id.count);
+     
+          const product = groceries[id.productId] //указал продукт= обьект[ключу который мы сделали перебором выше]
+         //  console.log(product); //вывoдит
+       
+          if(product) {
+           const priceDiscount = product.price - (product.price / 100 * product.discount) //ищу цену по скидке
+           sum +=  priceDiscount * id.count  // каждую итерацию прибавляю к сумме цену новую*колличетсво
+           console.log(`${priceDiscount}$ цена за ${product.name} по скидке`); //цена по скидке норм выводит
+          }
+         }
+         console.log(`за вашу корзину продуктов вы должны ${sum.toFixed(2)}$ и 7 часов моего времени`);
+       }
+     getTotalPriceOfShoppingBag(shoppingBag)
+}
+// task8()
+
+  
+
+  
+/*12.2 доп */
+
+
+ const heroPlayer = {
+    name : 'зло',
+    health : 100,
+    // enemy: 10,
+    heatEnemy (enemy){
+        enemy.health -= 10
+        console.log(`${this.name} ударило ${enemy.name}! У ${enemy.name} осталось ${enemy.health} здоровья`);
+         }
+ }
+
+ const enemyPlayer = {
+    name: 'добро',
+    health : 100,
+    heatHero (hero) {
+        hero.health -= 10
+        console.log(`${this.name} ударило ${hero.name}! У ${hero.name} осталось ${hero.health} здоровья`);
+ } 
+};
+
+//  console.log(heroPlayer.health - 10);
+
+function getRandomNumberInRange (min,max) {
+    return Math.floor(Math.random() * (max - min + 1) + min) //рандом от 0 до 1
+ }
+
+ function startGame() {
+    while (heroPlayer.health >= 0 && enemyPlayer.health >= 0) { // цикл через вайл
+ const random = getRandomNumberInRange(0, 1)   //задал вызов в переменную
+    
+ if(random  === 0) {
+heroPlayer.heatEnemy(enemyPlayer) //() на кого делается урон писать надо
+ } else  {
+enemyPlayer.heatHero(heroPlayer)
+ }
+
+}
+
+if (heroPlayer.health < 0) { //проверка наличия здоровья на каждом круге у обоих
+  console.log(`${enemyPlayer.name} победило! У него осталось ${enemyPlayer.health} здоровья`);
+
+}
+if (enemyPlayer.health < 0) {
+  console.log(`${heroPlayer.name} победило! У него осталось ${heroPlayer.health} здоровья`);
+
+}}
+// startGame()
+
