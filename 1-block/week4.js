@@ -8,16 +8,16 @@ function task1() {
           this.level += 1; //+1 к лвл
       
           if (this.level === 2) {
-            return this.stack.push("css"); //добавляем в массив стэка элемент
+            this.stack.push("css"); //добавляем в массив стэка элемент
           }
-          if (this.level === 3) {
-            return this.stack.push("JavaScript");
+         else if (this.level === 3) {
+            this.stack.push("JavaScript");
           }
-          if (this.level === 4) {
-            return this.stack.push("React");
+         else if (this.level === 4) {
+            this.stack.push("React");
           }
-          if (this.level === 5) {
-            return this.stack.push("NodeJs");
+         else if (this.level === 5) {
+            this.stack.push("NodeJs");
           } else if (this.level > 5) {// если больше 5 ,то все выучил и конец
             console.log(`Студент выучил все технологии!`);
           }
@@ -29,9 +29,8 @@ function task1() {
       student.improveLevel();
       student.improveLevel();
       student.improveLevel();
-      student.improveLevel(this.level);
-      student.improveLevel(this.level);
-      console.log(student);
+      student.improveLevel();
+      student.improveLevel();
       console.log(student.stack);
 }
 // task1()
@@ -59,7 +58,7 @@ function task2() {
   function makeDomestic(isDomestic = "") {
     (this.isDomestic = isDomestic),
       console.log(
-        `${this.type} по имени ${this.name} гоорит ${this.makeSound()}`
+        `${this.type} по имени ${this.name} говорит ${this.makeSound()}`
       );
     return this;
   }
@@ -171,3 +170,191 @@ function task5 () {
 
 
 /*13.3*/
+
+function task6() {
+    class Dictionary {
+        constructor(name) {
+            this.name = name
+            this.words = {}
+        }
+        add(word, description) {
+            if(!this.words.hasOwnProperty(word))
+           this.words[word] = {word, description}
+        }
+        remove(word) {
+            delete this.words[word]
+        }
+        get(word) {
+            if(this.words.hasOwnProperty(word)) {
+                 console.log(word); }  // ТВК ВЫВОДИТЬ? А ТО С return пусто-все не могу их понять
+                 else{console.log(`такого слова нет в словаре`)}
+                }
+    
+        showAllWords() {
+    Object.values(this.words).forEach(val => {
+        console.log(`${val.word} - ${val.description}`);
+    })
+    } }
+        
+    
+    
+    const dictionary = new Dictionary('Толковый словарь');
+    dictionary.add('JavaScript', 'популярный язык программирования');
+    dictionary.add('Веб-разработчик', 'Человек, который создает новые сервисы и сайты или поддерживает и дополняет существующие');
+    console.log(dictionary);
+    dictionary.showAllWords()
+    dictionary.get('есть нет слово?') // выводит норм консоль
+    dictionary.get('JavaScript') // выводит слово 
+    
+}
+// task6()
+
+/*13.4*/
+
+function task7() {
+    class Dictionary {
+        constructor(name) {
+            this.name = name
+            this.words = {}
+        }
+        add(word, description) {
+            if(!this.words.hasOwnProperty(word))
+           this.words[word] = {word, description}
+        }
+        remove(word) {
+            delete this.words[word]
+        }
+        get(word) {
+            if(this.words.hasOwnProperty(word)) {
+                 console.log(this.words[word]); }  
+                 else{console.log(`такого слова нет в словаре`)}
+                }
+    
+        showAllWords() {
+    Object.values(this.words).forEach(val => {
+        console.log(`${val.word} - ${val.description}`);
+    })
+    }
+     }
+        
+    //класс для сложных слов/ ЕСЛИ КОНСТУКТОР И СУПЕР ПОЛНОСТЬЮ ПОВТОРЯЮТСЯ В ДОЧЕРНЕМ  БЕЗ ДОБАВЛЕНИЯ - МОГУ НЕ ПИСАТЬ ИХ
+
+    class HardWordsDictionary extends Dictionary {
+        add(word, description,isDifficult = true ) {//isDifficult -чтоб менять мог закинул сюда- либо лучше ниже тру написать  и тут убрать
+            if (!this.words.hasOwnProperty(word)) {
+                super.add(word, description) //вызов родительского метода -КАК ПРО ТАКОЕ УЗНАТЬ ? ВЫДАЛ ЧАТ ИИ/ В УРОКАХ не было и гуглить не знал как
+                this.words[word].isDifficult = isDifficult // не забывать вывести чему равно
+    
+            }
+        }
+    }
+    
+    const hardWordsDictionary = new HardWordsDictionary('Сложные слова');
+    console.log(hardWordsDictionary);
+        hardWordsDictionary.add('дилетант', 
+            'Тот, кто занимается наукой или искусством без специальной подготовки, обладая только поверхностными знаниями.', false);
+            
+        hardWordsDictionary.add('неологизм', 
+            'Новое слово или выражение, а также новое значение старого слова.');
+            
+        hardWordsDictionary.add('квант', 
+            'Неделимая часть какой-либо величины в физике.', false); 
+    
+            console.log(hardWordsDictionary.add());
+        hardWordsDictionary.remove('неологизм');
+        
+        hardWordsDictionary.showAllWords();
+    
+    hardWordsDictionary.get('неологизм') // удалил -нет слова
+    
+// console.log(this.words.word[1]); //хочу вывести ,допустим ключ-слово само или значение- как могу сделать??
+// console.log(val.word[1]);
+
+}
+// task7()
+
+
+/*13.5*/
+
+function task8() {
+
+    class Developer{
+        constructor(fullName, age,  position) {
+            this.fullName = fullName
+            this.age = age
+            this.position = position
+            this.technologies = []
+    
+        }
+    code() {}
+    learnNewTechnologies (technology) {
+        this.technologies.push(technology)
+    }
+    }
+    
+    
+    class JuniorDeveloper extends Developer{
+    
+        constructor(fullName, age,position = 'junior', technology){
+    super(fullName, age,  position)
+            this.technologies = ['HTML', 'CSS', 'JavaScript']
+    
+        }
+        code(){
+            console.log(`${this.position} разработчик пишет код...`);
+        }
+        learnNewTechnologies(technology) {
+        this.technologies.push(technology)
+        }
+    }
+    
+    class MiddleDeveloper extends Developer{
+        constructor(fullName, age,position = 'MiddleDeveloper'){
+    super(fullName, age,  position)
+    this.technologies = ['HTML', 'CSS', 'JavaScript', 'React']
+    
+        }
+        code(){
+            console.log(`${this.position} разработчик пишет код...`);
+        }
+        learnNewTechnologies(technology) {
+            this.technologies.push(technology)
+            }
+    }
+    
+    class SeniorDeveloper extends Developer{
+        constructor(fullName, age,position = 'SeniorDeveloper'){
+            super(fullName, age,  position)
+            this.technologies = ['HTML', 'CSS', 'JavaScript', 'React', 'NodeJS']
+    
+                }
+                code(){
+                    console.log(`${this.position} разработчик пишет код...`);
+                }
+                learnNewTechnologies(technology) {
+                    this.technologies.push(technology)
+                    }
+            }
+    
+    
+    const juniorDeveloper = new JuniorDeveloper('Анастасия', 20);
+    const middleDeveloper = new MiddleDeveloper('Игорь', 25);
+    const seniorDeveloper = new SeniorDeveloper('Максим', 30);
+    
+    juniorDeveloper.code(); // Junior разработчик пишет код...
+    middleDeveloper.code(); // Middle разработчик пишет код...
+    seniorDeveloper.code(); // Senior разработчик пишет код...
+    
+    console.log(juniorDeveloper.technologies); //вызов технологий у джуна
+    
+    
+    console.log(juniorDeveloper.fullName, juniorDeveloper.age, juniorDeveloper.position, juniorDeveloper.technologies); 
+    // 'Анастасия' 20 'Junior' ['HTML', 'CSS', 'JavaScript']
+    console.log(juniorDeveloper.position);
+    console.log(middleDeveloper.fullName, middleDeveloper.age, middleDeveloper.position, middleDeveloper.technologies); 
+    // 'Игорь' 25 'Middle' ['HTML', 'CSS', 'JavaScript', 'React']
+    
+    console.log(seniorDeveloper.fullName, seniorDeveloper.age, seniorDeveloper.position, seniorDeveloper.technologies); 
+    // 'Максим' 30 'Senior' ['HTML', 'CSS', 'JavaScript', 'React', 'NodeJS', 'Docker']
+}
+task8()
