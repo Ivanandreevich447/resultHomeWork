@@ -357,4 +357,71 @@ function task8() {
     console.log(seniorDeveloper.fullName, seniorDeveloper.age, seniorDeveloper.position, seniorDeveloper.technologies); 
     // 'Максим' 30 'Senior' ['HTML', 'CSS', 'JavaScript', 'React', 'NodeJS', 'Docker']
 }
-task8()
+// task8()
+
+
+/*13.1*/
+
+
+function task9(){
+    const attacker = {
+        archer: 30,
+        footSoldier: 55,
+        cavalry: 10,
+        artillery: 3, 
+    
+        checkChancesToWin(defenderObject) {
+            let chance = 0
+            const getKeyDeffender = Object.keys(defenderObject);
+            const getMaxChance = getKeyDeffender.length
+    
+            getKeyDeffender.forEach(key =>{
+                if(this[key] > defenderObject[key]) {
+                    chance++
+                }
+            })
+            return [chance, getMaxChance]
+        },
+    
+        improveArmy() {
+           
+            for(const key in this) {// this - обращение к этому объекту
+                if(typeof this[key] === 'number' && !(this[key] instanceof Function)) {
+                    this[key] +=5
+                }
+                }
+            }, //НЕ ЗАБВАТЬ РАЗДЕЛЯТЬ МЕТОДЫ И СВ-ВА ЗАПЯТЫМИ!!!
+    
+            attack(defender) {
+                const [chance, getMaxChance] = this.checkChancesToWin(defender)
+    
+                    if((chance / getMaxChance) * 100 < 70 ) {
+                        this.improveArmy()
+                        console.log(`Наши шансы равны ${chance} / ${getMaxChance} ,необходимо укрепление!!`);
+                    } else {console.log(`Мы усилились! Мы несомненно победим! Наши шансы высоки!`);
+        
+                    }
+                }
+            
+               
+            }
+    
+        
+    
+    
+    // console.log(attacker.improveArmy()); //андефайн, но значения после вызова прибавляет
+    // console.log(attacker); //++значение
+     
+     const defender = {
+        archer: 33,
+        footSoldier: 50,
+        cavalry: 40,
+        artillery: 10,
+    
+     }
+    
+     attacker.attack(defender); // Наши шансы равны 1/4. Необходимо укрепление! 
+    attacker.attack(defender); // Наши шансы равны 2/4. Необходимо укрепление! 
+    attacker.attack(defender); // Мы усилились! Мы несомненно победим! Наши шансы высоки! 
+}
+// task9()
