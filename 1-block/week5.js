@@ -1,233 +1,323 @@
-// /*14.1*/
-
-// 1//
-
-function task1 () {
-//в обратных ковычках укажу весь код и всё
-const $getHTML = `<form class="create-user-form">
-    <label>
-        Имя
-        <input type="text" name="userName" placeholder="Введите ваше имя">
-    </label>
-    <label>
-        Пароль
-        <input type="password" name="password" placeholder="Придумайте Пароль">
-    </label>
-    <button type="submit">
-        Подтвердить
-    </button>
-</form>
-`
-
-console.log($getHTML);
-}
-// task1()
 
 
-// 2.//
+/*15.4*/
+//попробовать удалять из хтмл спан с ошибками - если все ок -добавили задачу- старые ошибки стирать из кода
 
-function task2()  {
+function task5() {
+  let tasks = [
+    {
+      id: "1138465078063",
+      completed: false,
+      text: "Выполнить ДЗ после урока",
+    },
+    {
+      id: "11384650780613",
+      completed: false,
+      text: "понять как это работает",
+    },
+    {
+      id: "11384650780633",
+      completed: false,
+      text: "повторить еще раз",
+    },
+  ];
 
-//создаю form - в него класс
-const createUserForm = document.createElement('form')
-createUserForm.className = ('create-user-form')
+  //тут отдельно задаю названия
+  const body = document.body;
+  const tasksListContainer = document.querySelector(".tasks-list"); 
+  const createTaskBlock = document.querySelector(".create-task-block"); // форм
+  let isDarkTheme = false;
+  
 
-//создаю и наполняю лейбл для имени - помещаю в форм
-const labelName = document.createElement('label')
-// console.log(label);
-labelName.innerText = ('Имя')
-
-//инпут для имени - помещаю в луйбл для имени
-const inputName = document.createElement('input')
-inputName.type = ('text')
-inputName.name = ('userName')
-inputName.placeholder = ('Введите ваше имя')
-
-//лейбл для пароля
-const labelPassword = document.createElement ('label')
-labelPassword.textContent = ('Пароль')
-
-//инп для пароля
-const inputPassword = document.createElement('input')
-inputPassword.type = ('password')
-inputPassword.name = ('password')
-inputPassword.placeholder = ('Придумайте Пароль')
-
-//кнопка в самом низу 
-const button = document.createElement('button')
-button.type = ('submit')
-button.innerText = ('Потвердить')
+   // на форм навесил обработчик сабмит/ евент функц вынес отдельно тут передаю вместо евент - имя функц addTask
+  createTaskBlock.addEventListener("submit", addTask);
 
 
-document.body.append(createUserForm)//ВОТ ТАК ВЫЗВАТЬ БОДИ
- 
-createUserForm.append(labelName) // label в createUserForm -начало
+  function createId() {
+    return String(new Date().getTime());
+  }
 
-labelName.append(inputName) //в label добавил в начало input
+  function addTask(event) {
+    event.preventDefault(); 
 
-labelName.insertAdjacentElement('afterend', labelPassword) //после лейбла имени добавим с паролем
+    const { target } = event;
 
-labelPassword.insertAdjacentElement('beforeend', inputPassword) //в лейбл с пасс добавим шнп с пасс
+    const taskNameInput = target.taskName; 
+    const inputValue = taskNameInput.value.trim(); 
 
-labelPassword.insertAdjacentElement('afterend', button) //кнопка после лейбл с пасс
+    const spanMessage = document.createElement("span");
+    spanMessage.className = "error-message-block";
+    createTaskBlock.append(spanMessage);
+    spanMessage.innerHTML = "";
 
-console.log(createUserForm);
+    if (validCheck(inputValue)) {
+      const newTask = {
+        id: createId(), //дата сейчас
+        completed: false, // стандартно
+        text: inputValue, // получаем из строки
+      };
+      console.log(newTask.id);
+      tasks.push(newTask); 
+   
+      spanMessage.innerHTML = "";
+      spanMessage.remove(); 
+      renderTask(); //обнов
 
-}
-// task2()
-
-
-
-
-
-/*14.2*/
-
-function task3() {
-
-    const tasks = [
-        {
-            id: '1138465078061',
-            completed: false,
-            text: '!Посмотреть новый урок по JavaScript',
-        },
-        {
-            id: '1138465078062',
-            completed: false,
-            text: 'Выполнить тест после урока',
-        },
-        {
-            id: '1138465078063',
-            completed: false,
-            text: 'Выполнить ДЗ после урока',
-        },
-        {
-            id: '11384650780613',
-            completed: false,
-            text: 'понять как это работает',
-        },
-        {
-            id: '11384650780633',
-            completed: false,
-            text: 'повторить еще раз',
-        },
-    ];
-    
-    // function getTask() {
-    //     return tasks
-    // }
-    
-    // function createTask (text) {
-    //     const newTask = {
-    
-    //         id : new Date().getTime(),
-    //         name : text
-    
-    // }
-    // tasks.push(newTask) 
-    // return tasks
-    //     }
-      
-    // function deleteTask (id) {
-    //     tasks = tasks.filter((task) => task.id !== id) 
-    //         return tasks
-    //     }
-    
-    
-       function createTaskElement (task) {//парметр из прендера главный - task - с ним работаю и его вставляю-это 
-       
-        // obj из массива, откуда вытащу id / name/ может чекбокс значение поменяю и применю
-    //в этой функции я хочу записать весь хтмл код через js и хранится все это дело в главном див - taskItem!!!!
-    
-    //создам все дивы
-    const taskItem = document.createElement('div')
-    const taskContainer = document.createElement('div')
-    const taskContent = document.createElement('div')
-    
-    //class для div
-    
-    taskItem.className = ('task-item')
-    // taskItem.dataset.taskId =('1') //в задании надо указать ид сюда и в фор / инпут
-    taskItem.dataset.taskId = task.id
-    
-    taskContainer.className = ('task-item__main-container')
-    
-    taskContent.className = ('task-item__main-content"')
-    
-    
-    //form
-    const formCheckbox = document.createElement('form')
-    formCheckbox.className = ('checkbox-form')
-    
-    //input
-    const inputCheckbox = document.createElement('input')
-    inputCheckbox.className = ('checkbox-form__checkbox')
-    inputCheckbox.type = ('checkbox')
-    // inputCheckbox.id = ('task-1')//тоже ид указать
-    inputCheckbox.id = `task-${task.id}` //в `` НАДО получить task-id / id могу получить через task.id и чтоб чтоб получить task-id изменяемый 1ой строкой пишу ТАК `task-${task.id}`
-    
-    //label
-    const labelTask = document.createElement('label')
-    // labelTask.htmlFor = ('task-1')//тоже ид как лебел в задаче
-    labelTask.htmlFor = `task-${task.id}`
-    
-    //form и label - одинаковые значения имеют ВСЕГДА! нужно подставить по задаче наш ID!
-    
-        //span
-    const spanTask = document.createElement('span')
-    spanTask.className = ('task-item__text')
-    spanTask.textContent = task.text // будем потом каждый раз новый текст для задачи задавать // консоль пишет ошибку на нейм
-    // spanTask.textContent = `Посмотреть новый урок по JavaScript`
-    // console.log(spanTask);
-    
-    //button
-    const buttonDelete = document.createElement('button')
-    buttonDelete.className = ('task-item__delete-button default-button delete-button')
-    buttonDelete.textContent = 'удалить'
-    
-    
-    //разместить созданные объекты
-    
-    taskItem.insertAdjacentElement('afterbegin', taskContainer)
-    
-    taskContainer.insertAdjacentElement('afterbegin', taskContent)
-    taskContainer.insertAdjacentElement('beforeend', buttonDelete)
-    
-    taskContent.insertAdjacentElement('afterbegin', formCheckbox)
-    
-    //form и ниже
-    formCheckbox.insertAdjacentElement('afterbegin', inputCheckbox)
-    formCheckbox.insertAdjacentElement('beforeend', labelTask)
-    
-    //span
-    labelTask.insertAdjacentElement('afterend', spanTask)
-    
-    taskContent.insertAdjacentElement('afterbegin', formCheckbox)
-    
-    
-    // console.log(task);
-    // console.log(task.text);
-    
-    return taskItem // там вся стурктура хтмл лежать должна у меня в итоге и я ее создаю в функции этой..
-    //передать параметр должен из рендера - таск из перебора
-    
-       }
-    
-    
-       
-    function renderTask () {
-    
-        const tasksListContainer = document.querySelector(".tasks-list");// получаю по классу элемент дом/ необязательно тут писать/ могу вынести за функцию
-    
-        tasks.forEach((task) => {
-        const taskItem = createTaskElement(task); //пишу переменную для функции
-        tasksListContainer.append(taskItem); // что писал в функц вставляю в tasksListContainer 
-    
-        return task // я перебором массива получаю отдельные элементы - наши задачи по одной и с ними мне надо работать!! там есть id/name и completed - его надо тоже прописать куда-то значение
-        })
-    
     }
-    renderTask()
+
+    return inputValue;
+  }
+
+  function validCheck(inputValue) {
+    if (inputValue === "") {
+      console.log(`название задачи не должно быть пустым`);
+    } 
+    else if (tasks.some((inTask) => inTask.text === inputValue)) {
+      console.log(`задача с таким название уже есть`);
+    } else {
+      return true;
+    }
+  }
+
+  function createTaskElement(task) {
+    //парметр из рендера главный - task - с ним работаю и его вставляю-это
+    //в этой функции я хочу записать весь хтмл код через js и хранится все это дело в главном див - taskItem!!!!
+
+    //создам все дивы
+    const taskItem = document.createElement("div");
+    const taskContainer = document.createElement("div");
+    const taskContent = document.createElement("div");
+
+    //class для div
+
+    taskItem.className = "task-item";
+    // taskItem.dataset.taskId =('1') //в задании надо указать ид сюда и в фор / инпут
+    taskItem.dataset.taskId = task.id;
+
+    taskContainer.className = "task-item__main-container";
+    taskContent.className = 'task-item__main-content"';
+
+    //form
+    const formCheckbox = document.createElement("form");
+    formCheckbox.className = "checkbox-form";
+
+    //input
+    const inputCheckbox = document.createElement("input");
+    inputCheckbox.className = "checkbox-form__checkbox";
+    inputCheckbox.type = "checkbox";
+    inputCheckbox.id = `task-${task.id}`; //в `` НАДО получить task-id / id могу получить через task.id и чтоб чтоб получить task-id изменяемый 1ой строкой пишу ТАК `task-${task.id}`
+
+    //label
+    const labelTask = document.createElement("label");
+    // labelTask.htmlFor = ('task-1')//тоже ид как лебел в задаче
+    labelTask.htmlFor = `task-${task.id}`;
+
+    //form и label - одинаковые значения имеют ВСЕГДА! нужно подставить по задаче наш ID!
+
+    //span
+    const spanTask = document.createElement("span");
+    spanTask.className = "task-item__text";
+    spanTask.textContent = task.text;
+
+    const buttonDelete = document.createElement("button");
+    buttonDelete.className =
+      "task-item__delete-button default-button delete-button";
+    buttonDelete.textContent = "удалить";
+
+    //разместить созданные объекты
+
+    taskItem.insertAdjacentElement("afterbegin", taskContainer);
+
+    taskContainer.insertAdjacentElement("afterbegin", taskContent);
+    taskContainer.insertAdjacentElement("beforeend", buttonDelete);
+
+    taskContent.insertAdjacentElement("afterbegin", formCheckbox);
+
+    //form и ниже
+    formCheckbox.insertAdjacentElement("afterbegin", inputCheckbox);
+    formCheckbox.insertAdjacentElement("beforeend", labelTask);
+
+    //span
+    labelTask.insertAdjacentElement("afterend", spanTask);
+
+    taskContent.insertAdjacentElement("afterbegin", formCheckbox);
+
+    return taskItem; // там вся стурктура хтмл лежать должна у меня в итоге и я ее создаю в функции этой..
+    //передать параметр должен из рендера - таск из перебора
+  }
+
+  function renderTask() {
+    tasksListContainer.innerHTML = ""; //ВАЖНО!! ОБНОВЛЯЕТ ХТМЛ КАЖДЫЙ РАЗ- А ТО ЗАДАЧИ БУДУТ КАЖДЫЙ КРУГ ПО НОВОЙ ЗАПИСЫВАТЬСЯ!!
+
+    tasks.forEach((task) => {
+      const taskItem = createTaskElement(task);
+      if (isDarkTheme) {
+        blackThemeNew(taskItem);
+      }
+      tasksListContainer.append(taskItem); 
+      return task; 
+    });
+
     
+  }
+
+  renderTask();
+
+  function modalDelete() {
+    const divModal = document.createElement("div");
+    divModal.className = "modal-overlay modal-overlay_hidden";
+
+    const deleteModal = document.createElement("div");
+    deleteModal.className = "delete-modal";
+    divModal.append(deleteModal);
+
+    const deleteModalQuestion = document.createElement("h3");
+    deleteModalQuestion.className = "delete-modal__question";
+    deleteModalQuestion.textContent =
+      "Вы действительно хотите удалить эту задачу?";
+    deleteModal.append(deleteModalQuestion);
+
+    const deleteModalButtons = document.createElement("div");
+    deleteModalButtons.className = "delete-modal__buttons";
+    deleteModal.append(deleteModalButtons);
+
+    const deleteButtonChanel = document.createElement("button");
+    deleteButtonChanel.className =
+      "delete-modal__button delete-modal__cancel-button";
+    deleteButtonChanel.textContent = "отмена";
+    deleteModalButtons.append(deleteButtonChanel);
+
+    const deleteButtonModal = document.createElement("button");
+    deleteButtonModal.className =
+      "delete-modal__button delete-modal__confirm-button";
+    deleteButtonModal.textContent = "Удалить";
+    deleteModalButtons.append(deleteButtonModal);
+
+    document.body.appendChild(divModal);
+
+    return divModal;
+  }
+  modalDelete();
+
+  const modalOverlay = document.querySelector(".modal-overlay");
+  const deleteModal = document.querySelector(".delete-modal");
+
+  tasksListContainer.addEventListener("click", (event) => {
+    // console.log(event.target);
+
+    const isTask = event.target.closest(".task-item");
+    const inTaskId = isTask.dataset.taskId;
+    // console.log(inTaskId);
+
+    const delBtn = event.target.closest(".delete-button");
+    console.log(delBtn);
+    if (delBtn) {
+      console.log("клик на удалить в задаче");
+      modalOverlay.classList.remove("modal-overlay_hidden");
+
+      deleteModal.addEventListener("click", (event) => {
+        console.log(event.target);
+        const isButtonDelete = event.target.closest(
+          ".delete-modal__confirm-button"
+        );
+        const isButtonCancel = event.target.closest(
+          ".delete-modal__cancel-button"
+        );
+
+        if (isButtonCancel) {
+          console.log("клик на отмена");
+          modalOverlay.classList.add("modal-overlay_hidden"); //появится класс хайдн - закроет модалку
+        }
+        if (isButtonDelete) {
+          console.log("клик по удалить в мадальном");
+          tasks = tasks.filter((task) => task.id !== inTaskId);
+
+          renderTask();
+          modalOverlay.classList.add("modal-overlay_hidden");
+        }
+      });
+    }
+  });
+
+  const doc = document;
+  // console.log(doc);
+
+  doc.addEventListener("keydown", (event) => {
+
+    if (event.keyCode === 9) {
+      isDarkTheme = !isDarkTheme; // если не темная тема стоит  
+      updateTheme()// там ниже функц
+    }
+  });
+
+  //функц для переключения тем
+  function updateTheme () {
+    if (isDarkTheme) {
+        blackTheme(); // Применяем тёмную тему
+      } else {
+        lightTheme(); // Применяем светлую тему
+      }
+  }
+
+
+  //для всех существующих тема
+  function blackTheme() {
+    taskItemGetClass = document.querySelectorAll(".task-item");//обновил данные - все равно только старое
+    buttonClass = document.querySelectorAll("button");
+
+    body.style.backgroundColor = "#24292E"
+
+    taskItemGetClass.forEach((elem) => {
+      elem.style.color = "#ffffff";
+
+      buttonClass.forEach(btn => btn.style.border = '1px solid #ffffff');
+      
+    });
+  }
+
+
+
+  function lightTheme() {
+    taskItemGetClass = document.querySelectorAll(".task-item");//обновил данные - все равно только старое
+    buttonClass = document.querySelectorAll("button");
+
+    body.style.backgroundColor = "";
+
+    taskItemGetClass.forEach((elem) => {
+      elem.style.color = "";
+      console.log(elem);
+    });
+buttonClass.forEach(btn => {
+    btn.style.cssText = 'border: none'
+})
+  }
 }
 
-task3()
+
+//НУЖНО ДЛЯ НОВЫХ ЗАДАЧ СДЕЛАТЬ ПОКРАСКУ ТЕМНОЙ ТОЖЕ- А ТО ТОЛЬКО СТАРЫЕ КРАСИТ СКА!
+
+function blackThemeNew (newElement) {
+    newElement.style.color = "#ffffff";
+
+    //надо еще кнопки обновлять!
+   const buttonClassNew = newElement.querySelectorAll('button')
+   buttonClassNew.forEach(btn => {
+    btn.style.cssText = 'border: 1px solid #ffffff'
+})
+}
+
+
+
+
+task5();
+
+//меняем тему на теменую по кнопке ТАБ, если темная то:
+
+//у темной - боди имеет свойство бэкграунд меняться, иначе инишиал
+//из таск айтем все его эл-ты - в колор замена  цвета
+//ко всем баттон надо добавить рамку,иначе убрать
+
+//сделал смену темы на таб/ нужно добавлять новые задачи и их тоже обновлять
+// создать новую тему для новых задач и в рендере указать
+//  рендер - нужна проверка на тему какая сейчас/
+// если темная - новые задачи тоже оберни в темную
