@@ -239,64 +239,36 @@ function task5() {
     }
   });
 
-  const doc = document;
-  // console.log(doc);
 
-  doc.addEventListener("keydown", (event) => {
 
-    if (event.keyCode === 9) {
-      isDarkTheme = !isDarkTheme; // если не темная тема стоит  
-      updateTheme()// там ниже функц
+
+//переделал короче с тогл
+
+  document.addEventListener('keydown', event => {
+    if(event.key === 'Tab') {
+      event.preventDefault()
+      isDarkTheme = !isDarkTheme
+      body.classList.toggle('dark-theme')
+      updateTheme()
     }
-  });
+  })
 
-  //функц для переключения тем
   function updateTheme () {
-    if (isDarkTheme) {
-        blackTheme(); // Применяем тёмную тему
-      } else {
-        lightTheme(); // Применяем светлую тему
-      }
+    const taskItems = document.querySelectorAll('.task-item')
+    const buttons = document.querySelectorAll ('button')
+
+    if(isDarkTheme){
+      body.style.backgroundColor = "#24292E";
+      taskItems.forEach((item) => item.style.color = "#ffffff");
+      buttons.forEach((btn) => btn.style.border = "1px solid #ffffff");
+    } else {
+      body.style.backgroundColor = "";
+      taskItems.forEach((item) => item.style.color = "");
+      buttons.forEach((btn) => btn.style.border = "none");
+    }
   }
 
-
-  //для всех существующих тема
-  function blackTheme() {
-    taskItemGetClass = document.querySelectorAll(".task-item");//обновил данные - все равно только старое
-    buttonClass = document.querySelectorAll("button");
-
-    body.style.backgroundColor = "#24292E"
-
-    taskItemGetClass.forEach((elem) => {
-      elem.style.color = "#ffffff";
-
-      buttonClass.forEach(btn => btn.style.border = '1px solid #ffffff');
-      
-    });
-  }
-
-
-
-  function lightTheme() {
-    taskItemGetClass = document.querySelectorAll(".task-item");//обновил данные - все равно только старое
-    buttonClass = document.querySelectorAll("button");
-
-    body.style.backgroundColor = "";
-
-    taskItemGetClass.forEach((elem) => {
-      elem.style.color = "";
-      console.log(elem);
-    });
-buttonClass.forEach(btn => {
-    btn.style.cssText = 'border: none'
-})
-  }
-}
-
-
-//НУЖНО ДЛЯ НОВЫХ ЗАДАЧ СДЕЛАТЬ ПОКРАСКУ ТЕМНОЙ ТОЖЕ- А ТО ТОЛЬКО СТАРЫЕ КРАСИТ СКА!
-
-function blackThemeNew (newElement) {
+  function blackThemeNew (newElement) {
     newElement.style.color = "#ffffff";
 
     //надо еще кнопки обновлять!
@@ -306,6 +278,62 @@ function blackThemeNew (newElement) {
 })
 }
 
+//   doc.addEventListener("keydown", (event) => {
+
+//     if (event.keyCode === 9) {
+//       isDarkTheme = !isDarkTheme; // если не темная тема стоит  
+//       updateTheme()// там ниже функц
+//     }
+//   });
+
+//   //функц для переключения тем
+//   function updateTheme () {
+//     if (isDarkTheme) {
+//         blackTheme(); // Применяем тёмную тему
+//       } else {
+//         lightTheme(); // Применяем светлую тему
+//       }
+//   }
+
+
+//   //для всех существующих тема
+//   function blackTheme() {
+//     taskItemGetClass = document.querySelectorAll(".task-item");//обновил данные - все равно только старое
+//     buttonClass = document.querySelectorAll("button");
+
+//     body.style.backgroundColor = "#24292E"
+
+//     taskItemGetClass.forEach((elem) => {
+//       elem.style.color = "#ffffff";
+
+//       buttonClass.forEach(btn => btn.style.border = '1px solid #ffffff');
+      
+//     });
+//   }
+
+
+
+//   function lightTheme() {
+//     taskItemGetClass = document.querySelectorAll(".task-item");//обновил данные - все равно только старое
+//     buttonClass = document.querySelectorAll("button");
+
+//     body.style.backgroundColor = "";
+
+//     taskItemGetClass.forEach((elem) => {
+//       elem.style.color = "";
+//       console.log(elem);
+//     });
+// buttonClass.forEach(btn => {
+//     btn.style.cssText = 'border: none'
+// })
+//   }
+// }
+
+
+//НУЖНО ДЛЯ НОВЫХ ЗАДАЧ СДЕЛАТЬ ПОКРАСКУ ТЕМНОЙ ТОЖЕ- А ТО ТОЛЬКО СТАРЫЕ КРАСИТ СКА!
+
+
+}
 
 
 

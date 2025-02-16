@@ -4,7 +4,7 @@ function task1() {
         stack: ["html"],
         level: 1,
         improveLevel() {
-          //  for (let i = 1; i <= 6; i++)// фигня- по заданию вызывают функц несколько раз
+        
           this.level += 1; //+1 к лвл
       
           if (this.level === 2) {
@@ -34,6 +34,8 @@ function task1() {
       console.log(student.stack);
 }
 // task1()
+
+
 
 
 /*12.2*/
@@ -425,3 +427,6 @@ function task9(){
     attacker.attack(defender); // Мы усилились! Мы несомненно победим! Наши шансы высоки! 
 }
 // task9()
+
+
+
