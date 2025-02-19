@@ -1,7 +1,6 @@
 
 
 /*15.4*/
-//попробовать удалять из хтмл спан с ошибками - если все ок -добавили задачу- старые ошибки стирать из кода
 
 function task5() {
   let tasks = [
@@ -28,10 +27,7 @@ function task5() {
   const createTaskBlock = document.querySelector(".create-task-block"); // форм
   let isDarkTheme = false;
   
-
-   // на форм навесил обработчик сабмит/ евент функц вынес отдельно тут передаю вместо евент - имя функц addTask
   createTaskBlock.addEventListener("submit", addTask);
-
 
   function createId() {
     return String(new Date().getTime());
@@ -49,18 +45,17 @@ function task5() {
     spanMessage.className = "error-message-block";
     createTaskBlock.append(spanMessage);
     spanMessage.innerHTML = "";
+    spanMessage.remove(); 
 
     if (validCheck(inputValue)) {
       const newTask = {
-        id: createId(), //дата сейчас
-        completed: false, // стандартно
-        text: inputValue, // получаем из строки
+        id: createId(), 
+        completed: false, 
+        text: inputValue, 
       };
       console.log(newTask.id);
       tasks.push(newTask); 
    
-      spanMessage.innerHTML = "";
-      spanMessage.remove(); 
       renderTask(); //обнов
 
     }
@@ -71,9 +66,11 @@ function task5() {
   function validCheck(inputValue) {
     if (inputValue === "") {
       console.log(`название задачи не должно быть пустым`);
+      return false
     } 
     else if (tasks.some((inTask) => inTask.text === inputValue)) {
       console.log(`задача с таким название уже есть`);
+      return false
     } else {
       return true;
     }
@@ -202,11 +199,33 @@ function task5() {
   const modalOverlay = document.querySelector(".modal-overlay");
   const deleteModal = document.querySelector(".delete-modal");
 
+  let inTaskId = null; //опредлю ее в глобал(чтобы видели все)
+
+
+  deleteModal.addEventListener('click', event => {
+   const isButtonDelete = event.target.closest(".delete-modal__confirm-button")
+
+  const isButtonCancel = event.target.closest('.delete-modal__cancel-button') 
+  
+  if(isButtonCancel) {
+    modalOverlay.classList.add('modal-overlay_hidden');
+  } 
+  else if (isButtonDelete) {
+console.log(inTaskId);
+    tasks = tasks.filter((task) => task.id !== inTaskId);
+
+    renderTask();
+    modalOverlay.classList.add("modal-overlay_hidden");
+  }
+  })
+
+
+
   tasksListContainer.addEventListener("click", (event) => {
     // console.log(event.target);
 
     const isTask = event.target.closest(".task-item");
-    const inTaskId = isTask.dataset.taskId;
+    inTaskId = isTask.dataset.taskId;
     // console.log(inTaskId);
 
     const delBtn = event.target.closest(".delete-button");
@@ -215,31 +234,8 @@ function task5() {
       console.log("клик на удалить в задаче");
       modalOverlay.classList.remove("modal-overlay_hidden");
 
-      deleteModal.addEventListener("click", (event) => {
-        console.log(event.target);
-        const isButtonDelete = event.target.closest(
-          ".delete-modal__confirm-button"
-        );
-        const isButtonCancel = event.target.closest(
-          ".delete-modal__cancel-button"
-        );
-
-        if (isButtonCancel) {
-          console.log("клик на отмена");
-          modalOverlay.classList.add("modal-overlay_hidden"); //появится класс хайдн - закроет модалку
-        }
-        if (isButtonDelete) {
-          console.log("клик по удалить в мадальном");
-          tasks = tasks.filter((task) => task.id !== inTaskId);
-
-          renderTask();
-          modalOverlay.classList.add("modal-overlay_hidden");
-        }
-      });
     }
   });
-
-
 
 
 //переделал короче с тогл
@@ -330,7 +326,6 @@ function task5() {
 // }
 
 
-//НУЖНО ДЛЯ НОВЫХ ЗАДАЧ СДЕЛАТЬ ПОКРАСКУ ТЕМНОЙ ТОЖЕ- А ТО ТОЛЬКО СТАРЫЕ КРАСИТ СКА!
 
 
 }
