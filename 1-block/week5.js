@@ -213,7 +213,7 @@ function task5() {
   else if (isButtonDelete) {
 console.log(inTaskId);
     tasks = tasks.filter((task) => task.id !== inTaskId);
-
+console.log(inTaskId);
     renderTask();
     modalOverlay.classList.add("modal-overlay_hidden");
   }
@@ -344,3 +344,4 @@ task5();
 // создать новую тему для новых задач и в рендере указать
 //  рендер - нужна проверка на тему какая сейчас/
 // если темная - новые задачи тоже оберни в темную
+

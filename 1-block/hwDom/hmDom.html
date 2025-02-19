@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="hmDom.css" />
   <title>Работа с DOM</title>
 </head>
-<body>
+<!-- <body>
   <div id="tasks">
     <div class="tasks__wrapper">
       <form class="create-task-block">
@@ -31,7 +31,45 @@
   </div>
 
 
-</body>
+</body> -->
+<body>
+ 
+  <div id="tasks">
+    <div class="tasks__wrapper">
+      <form class="create-task-block">
+        <input
+          name="taskName"
+          class="create-task-block__input default-text-input"
+          type="text"
+          placeholder="Создайте новую задачу"
+          value="Посмотреть урок по JavaScript"
+        >
+        <button
+          type="submit"
+          class="create-task-block__button default-button"
+        >
+          Создать
+        </button>
+      </form>
+      <div class="tasks-list"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay modal-overlay_hidden">
+    <div class="delete-modal">
+        <h3 class="delete-modal__question">
+            Вы действительно хотите удалить эту задачу?
+        </h3>
+        <div class="delete-modal__buttons">
+            <button class="delete-modal__button delete-modal__cancel-button">
+                Отмена
+            </button>
+            <button class="delete-modal__button delete-modal__confirm-button">
+                Удалить
+            </button>
+        </div>
+    </div>
+</div>
 
 <script src="/resultHomeWork/1-block/week5.js" defer></script>
 <script src="/resultHomeWork/1-block/week5ForMe.js" defer></script>
