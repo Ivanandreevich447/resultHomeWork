@@ -82,14 +82,14 @@ function task2 () {
     } 
     
     const toggleLoader = () => {
-    const loaderHTML = document.querySelector('#loader')
-    const isHidden = loaderHTML.hasAttribute('hidden')
-    if(isHidden) {
-        loaderHTML.removeAttribute('hidden')
-    } else {
-        loaderHTML.setAttribute('hidden', '')
-    }
-    }
+        const loaderHTML = document.querySelector('#loader')
+        const isHidden = loaderHTML.hasAttribute('hidden')
+        if(isHidden) {
+            loaderHTML.removeAttribute('hidden')
+        } else {
+            loaderHTML.setAttribute('hidden', '')
+        }
+        }
     
 
 function getUsersByIds(ids) {
@@ -165,13 +165,15 @@ function getFastestLoadedPhoto(ids) {
         
 
 const requests = ids.map(id => fetch(`${urlPhoto}/${id}`) )
-
+console.log(requests);
 toggleLoader()
 Promise.race(requests)
     .then((response) => {
+        console.log(response);
 return response.json() 
     })
     .then((photos) => {  
+        console.log(photos);
         console.log(photos.photo.title);//там есть тайтл 
         const photoTitle = photos.photo.title
         const urlPhotoSrc = photos.photo.url
@@ -192,3 +194,124 @@ getFastestLoadedPhoto([60,12, 55, 11, 34, 23])
 
 }
 // task3()
+
+
+/*17.1*/
+
+function task4() {
+    const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
+    let isLoading = false;
+
+    const createNewPost = async () => {
+        isLoading = true;
+
+        try {
+            const response = await fetch(POSTS_URL, {
+                method: "POST"
+            })
+            console.log(response);
+            const result = await response.json()
+            console.log('result', result);
+
+        } catch (error)  {
+            console.log("error", error);
+        } finally {
+            isLoading = false
+        }
+
+    }
+    createNewPost()
+
+}
+// task4()
+
+
+
+/*17.2*/
+
+function task5( ) {
+    const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos';
+
+    const getTodosByIds = async (ids) => {
+
+        try {
+            const requests = await ids.map((id) => fetch(`${TODOS_URL}/${id}`))
+            console.log(requests);
+        
+                const response = await Promise.all(requests)
+        console.log(response);
+        
+                const dataResults = await Promise.all(response.map((data) => data.json())) 
+        console.log(dataResults);
+        
+        
+        } catch(error) {
+            console.log(error);
+          }
+       
+
+    
+    }
+    getTodosByIds([43, 21, 55, 100, 10])
+
+}
+
+// task5()
+
+
+
+
+/*17.3*/
+
+function task6( ) {
+const dataContainer = document.querySelector('#data-container')
+
+const toggleLoader = () => {
+    const loaderHTML = document.querySelector('#loader')
+    const isHidden = loaderHTML.hasAttribute('hidden')
+console.log(loaderHTML);
+
+    if(isHidden) {
+        loaderHTML.removeAttribute('hidden')
+    } else {
+        loaderHTML.setAttribute('hidden', '')
+    }
+    }
+function createElementAlbums (text) {
+    const elementLi = document.createElement ('li')
+    elementLi.textContent = text
+    return elementLi
+}
+async function renderAlbums () {
+
+const albumsUrl = 'https://jsonplaceholder.typicode.com/albums'
+
+toggleLoader()
+try {
+    const requests = await fetch(albumsUrl)
+    console.log(requests);
+    
+    const response = await requests.json()
+    console.log(response);
+    // dataContainer.innerHTML = ''
+    console.log(dataContainer);
+
+    response.forEach((album) => {
+    const albumsHTML = createElementAlbums(album.title)
+
+    dataContainer.append(albumsHTML)
+// console.log(dataContainer);
+    // console.log(response.title);
+    })
+} catch (error) {
+dataContainer.textContent = 'Произошла ошибка в получении данных об альбомах...'
+} finally {
+    toggleLoader()
+}
+}
+
+renderAlbums()
+}
+task6()
+
+
