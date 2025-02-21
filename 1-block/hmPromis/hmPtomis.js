@@ -196,6 +196,12 @@ getFastestLoadedPhoto([60,12, 55, 11, 34, 23])
 // task3()
 
 
+
+
+    //Асинхронность (async/await)
+
+
+
 /*17.1*/
 
 function task4() {
@@ -289,19 +295,16 @@ const albumsUrl = 'https://jsonplaceholder.typicode.com/albums'
 toggleLoader()
 try {
     const requests = await fetch(albumsUrl)
-    console.log(requests);
     
     const response = await requests.json()
-    console.log(response);
-    // dataContainer.innerHTML = ''
-    console.log(dataContainer);
+
+    dataContainer.innerHTML = ''
 
     response.forEach((album) => {
     const albumsHTML = createElementAlbums(album.title)
 
     dataContainer.append(albumsHTML)
-// console.log(dataContainer);
-    // console.log(response.title);
+
     })
 } catch (error) {
 dataContainer.textContent = 'Произошла ошибка в получении данных об альбомах...'
